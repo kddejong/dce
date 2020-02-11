@@ -6,8 +6,6 @@ import (
 	"log"
 	"net/url"
 
-	"github.com/aws/aws-sdk-go/service/iam"
-
 	"github.com/Optum/dce/pkg/api"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
@@ -17,19 +15,7 @@ import (
 )
 
 type accountControllerConfiguration struct {
-	Debug                       string   `env:"DEBUG" envDefault:"false"`
-	PolicyName                  string   `env:"PRINCIPAL_POLICY_NAME" envDefault:"DCEPrincipalDefaultPolicy"`
-	AccountCreatedTopicArn      string   `env:"ACCOUNT_CREATED_TOPIC_ARN" envDefault:"DefaultAccountCreatedTopicArn"`
-	AccountDeletedTopicArn      string   `env:"ACCOUNT_DELETED_TOPIC_ARN"`
-	ArtifactsBucket             string   `env:"ARTIFACTS_BUCKET" envDefault:"DefaultArtifactBucket"`
-	PrincipalPolicyS3Key        string   `env:"PRINCIPAL_POLICY_S3_KEY" envDefault:"DefaultPrincipalPolicyS3Key"`
-	PrincipalRoleName           string   `env:"PRINCIPAL_ROLE_NAME" envDefault:"DCEPrincipal"`
-	PrincipalPolicyName         string   `env:"PRINCIPAL_POLICY_NAME"`
-	PrincipalIAMDenyTags        []string `env:"PRINCIPAL_IAM_DENY_TAGS" envDefault:"DefaultPrincipalIamDenyTags"`
-	PrincipalMaxSessionDuration int64    `env:"PRINCIPAL_MAX_SESSION_DURATION" envDefault:"100"`
-	Tags                        []*iam.Tag
-	ResetQueueURL               string   `env:"RESET_SQS_URL" envDefault:"DefaultResetSQSUrl"`
-	AllowedRegions              []string `env:"ALLOWED_REGIONS" envDefault:"us-east-1"`
+	Debug string `env:"DEBUG" envDefault:"false"`
 }
 
 var (
