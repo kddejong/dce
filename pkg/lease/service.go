@@ -137,6 +137,9 @@ func (a *Service) ListPages(query *Lease, fn func(*Leases) bool) error {
 		if err != nil {
 			return err
 		}
+		if records == nil || len(*records) == 0 {
+			break
+		}
 		if !fn(records) {
 			break
 		}
